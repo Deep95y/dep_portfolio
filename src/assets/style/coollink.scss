@@ -1,0 +1,162 @@
+@import "base.scss";
+
+.coollink {
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  &:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    background: currentColor;
+    transform: scale3d(0, 1, 1);
+    transform-origin: right;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &:after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transform: translate3d(100px, 0, 0);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  & span {
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &:hover:before {
+    transform: scale3d(1, 1, 1);
+    transform-origin: left;
+  }
+
+  &:hover:after {
+    transform: translate3d(0, 0, 0);
+  }
+
+  &:hover span {
+    transform: translate3d(-100px, 0, 0);
+  }
+}
+
+.coolbutton {
+  position: relative;
+  border: none;
+  cursor: pointer;
+  height: 120px;
+  width: 175px;
+  background-color: transparent;
+  color: white;
+
+  &:before,
+  &:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  &:before {
+    content: "";
+    background-color: rgb(254, 254, 254);
+    clip-path: path(
+      "M154.5,88.5 C131,113.5 62.5,110 30,89.5 C-2.5,69 -3.5,42 4.5,25.5 C12.5,9 33.5,-6 85,3.5 C136.5,13 178,63.5 154.5,88.5 Z"
+    );
+    transition: clip-path 0.4s cubic-bezier(0.5, 2.5, 0.5, 0.5);
+  }
+
+  &:hover:before {
+    clip-path: path(
+      "M143,77 C117,96 74,100.5 45.5,91.5 C17,82.5 -10.5,57 5.5,31.5 C21.5,6 79,-5.5 130.5,4 C182,13.5 169,58 143,77 Z"
+    );
+  }
+
+  & span {
+    //to see the content of span as well as before.
+    mix-blend-mode: difference;
+    font-weight: 500;
+  }
+
+  &:after {
+    content: "";
+    height: 85%;
+    width: 95%;
+    top: 6px;
+    border: 1px solid white;
+    border-radius: 59% 41% 55% 45% / 56% 45% 55% 44%;
+    // transform: rotate(-20deg);
+    transition: transform 0.3s cubic-bezier(0.5, 2.5, 0.5, 0.5);
+  }
+
+  &:hover:after {
+    transform: translate3d(0, -5px, 0);
+  }
+
+  @media (max-width: 800px) {
+    & {
+      transform: scale3d(0.7, 0.7, 0.7);
+      font-size: 19px;
+    }
+  }
+}
+
+.coloredIcon {
+  font-size: 35px;
+  &:hover {
+    animation: colouredIconAnimation 1s infinite;
+  }
+  @keyframes colouredIconAnimation {
+    0% {
+      text-shadow: 5px 4px $purple-color, -5px -4px $blue_color;
+    }
+    25% {
+      text-shadow: -5px -4px $purple-color, 5px 4px $blue_color;
+    }
+    50% {
+      text-shadow: 5px -4px $purple-color, -5px 4px $blue_color;
+    }
+    75% {
+      text-shadow: -5px 4px $purple-color, 5px -4px $blue_color;
+    }
+    100% {
+      text-shadow: 5px 4px $purple-color, -5px -4px $blue_color;
+    }
+  }
+}
+
+.coolFunnyLink {
+  position: relative;
+  font-family: sans-serif;
+ 
+  svg {
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    stroke-width: 1px;
+    width: 95%;
+
+    path {
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+      // transform: scale3d(0, 1, 1);
+      transition:  stroke-dashoffset 0.6s cubic-bezier(0.075, 0, 0.365, 1);
+    }
+  }
+
+  &:hover {
+    svg {
+      path {
+        stroke-dashoffset: 0;
+        // also done with the transform ---->
+        // transform: scale3d(1, 1, 1);
+        transition-timing-function: cubic-bezier(0.8, 1, 0.7, 1);
+      }
+    }
+  }
+}
