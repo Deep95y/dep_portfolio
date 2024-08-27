@@ -6,7 +6,7 @@
     "dev": "parcel src/index.html",
     "build": "parcel build src/index.html"
   },
-  "author": "aditya sharma",
+  "author": "Deepa Yadav",
   "license": "ISC",
   "devDependencies": {
     "@parcel/packager-raw-url": "^2.9.3",
